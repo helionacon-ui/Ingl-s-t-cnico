@@ -288,5 +288,25 @@ SIMS.falsos=el=>quiz(el,{intro:'Falsos amigos y errores típicos de hispanohabla
  {q:'«Datos» como sujeto en inglés técnico →',o:['The data is reliable','The data are reliable','Both are accepted'],a:2,e:'<b>Ambas</b>: en textos científicos clásicos <i>data</i> es plural (<i>data are</i>), pero el uso singular está hoy admitido. Lo importante es ser <b>coherente</b> en todo el documento.'},
 ]});
 
+
+/* ---- paso a paso declarativo ---- */
+SIMS.__paso=(el,D)=>build(el,{w:D.w||660,h:D.h||340,
+ sliders:[{k:'paso',v:0,min:0,max:D.steps.length,step:1,l:'paso de la resolución (0 = enunciado)',u:''}],
+ draw(a){a.clear();const g=a.g,p=a.st.paso;
+  const it=(x,col)=>{const k=x[0];
+   if(k==='t')a.txt(x[1],x[2],x[3],col,x[4]||13,x[5]||'left');
+   else if(k==='l')a.line(x[1],x[2],x[3],x[4],col,x[5]||1.5,x[6]);
+   else if(k==='a')a.arrow(x[1],x[2],x[3],x[4],col,x[5]);
+   else if(k==='c')a.circ(x[1],x[2],x[3],col,!!x[4]);
+   else if(k==='r'){g.strokeStyle=col;g.lineWidth=1.8;if(x[5]){g.fillStyle=col;g.globalAlpha=.18;g.fillRect(x[1],x[2],x[3],x[4]);g.globalAlpha=1;}g.strokeRect(x[1],x[2],x[3],x[4]);}
+   else if(k==='p'){g.strokeStyle=col;g.lineWidth=x[2]||2;g.beginPath();x[1].forEach((q,i)=>i?g.lineTo(q[0],q[1]):g.moveTo(q[0],q[1]));g.stroke();}};
+  (D.base||[]).forEach(x=>it(x,C.muted));
+  D.steps.forEach((s,i)=>{if(i+1>p)return;const cur=(i+1===p);(s.add||[]).forEach(x=>it(x,cur?C.d:C.text));if(cur)(s.now||[]).forEach(x=>it(x,C.d));});
+  a.html('<div>'+(p===0?D.q:D.steps[p-1].text)+'</div>');}});
+/* ---- fin paso a paso declarativo ---- */
+
+/* ---- paso2 pasivaPaso ---- */
+SIMS.pasivaPaso=el=>SIMS.__paso(el,{"w":640,"h":265,"q":"Convierte «The machine cuts the metal sheet» a pasiva y úsalo para describir un proceso. Sube el paso.","base":[["t","Active voice → passive voice (process description)",30,26,14,"left"]],"steps":[{"text":"En descripciones de procesos de fabricación se usa la <b>voz pasiva</b> porque importa lo que se le hace al material, no quién lo hace. Vamos a convertir una frase activa.","add":[["t","ACTIVE:  The machine cuts the metal sheet.",30,70,15,"left"]]},{"text":"<b>Paso 1:</b> localiza el complemento directo (lo que recibe la acción): <b>the metal sheet</b>. Pasará a ser el sujeto de la frase pasiva.","add":[["t","1) object → subject:  the metal sheet",30,104,15,"left"]]},{"text":"<b>Paso 2:</b> el verbo pasa a <b>be + participio pasado</b>, con el tiempo del verbo original (present simple → <i>is</i>): cut → <b>is cut</b>. Si el sujeto es plural: <i>are cut</i>.","add":[["t","2) verb:  cuts → is cut   (be + past participle)",30,138,15,"left"]]},{"text":"<b>Paso 3:</b> el sujeto original (<i>the machine</i>) pasa a un complemento con <b>by</b>, y solo se mantiene si aporta información.","add":[["t","3) agent (optional):  by the machine",30,172,15,"left"]]},{"text":"Frase pasiva: <b>The metal sheet is cut (by the machine).</b> En procesos casi siempre se omite el agente: <i>The metal sheet is cut.</i>","add":[["t","PASSIVE:  The metal sheet is cut (by the machine).",30,206,15,"left"]]},{"text":"En un proceso completo se encadenan con conectores de secuencia: <i>First, the steel is heated. Then it is rolled into sheets. Finally, the sheets are cut and packed.</i> Cuidado con los participios irregulares: <i>heat → heated, cut → cut, make → made, weld → welded</i>.","add":[["t","First … Then … Finally …  (+ participios irregulares)",30,240,14,"left"]]}]});
+/* ---- fin paso2 pasivaPaso ---- */
 document.querySelectorAll('[data-sim]').forEach(el=>{const f=SIMS[el.dataset.sim];if(f)f(el);});
 })();
