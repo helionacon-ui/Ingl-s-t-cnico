@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,7 +86,7 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c1);--tcs:var(--c1s)">
 <div class="sh"><span aria-hidden="true" class="badge">8</span><div class="shx"><p class="kick">Especialidad y comunicación · Tema 8</p><h2 id="t8">Academic and formal English</h2><div class="tags"><span class="tag">Especialidad y comunicación</span><span class="tag">Comunicación</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> escribir y reconocer el registro adecuado: formal, neutro e informal, con la gramática que lo sostiene (pasiva, nominalización, relativas, conectores) y la estructura de un texto académico.</p><ul>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> escribir y reconocer el registro adecuado: formal, neutro e informal, con la gramática que lo sostiene (pasiva, nominalización, relativas, conectores) y la estructura de un texto académico.</p><ul>
 <li>El registro no es cuestión de palabras sueltas, sino de <b>tres marcas</b>: contracciones, phrasal verbs y origen de las palabras. Cuantas menos contracciones y más verbos de raíz latina, más formal.</li>
 <li>Pares típicos que conviene memorizar: <i>check / verify</i>, <i>carry on / proceed</i>, <i>find out / determine</i>, <i>get / obtain</i>, <i>ask for / request</i>, <i>fix up / arrange</i>, <i>buy / purchase</i>, <i>need / require</i>.</li>
 <li>En inglés académico domina la <b>voz pasiva</b> y la <b>nominalización</b>: «the measurement was carried out» mejor que «we measured».</li>
@@ -56,13 +96,13 @@ details>summary{line-height:1.7;padding-block:.5em}
 <!--ill--><div class="ill-wrap"><h3 class="ill-h" style="margin:22px 0 4px">En imágenes</h3><figure class="ill"><div class="ill-t">How a technical paper is organised</div><svg viewBox="0 0 560 262" role="img" aria-label="IMRaD structure" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><rect x="24" y="40" width="230" height="38" rx="8" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="1.8" opacity="0.09"/><text x="38" y="56" fill="var(--tc,var(--accent))" font-size="12.5" text-anchor="start" font-weight="700" opacity="1">Introduction</text><text x="38" y="71" fill="var(--fg)" font-size="11" text-anchor="start" font-weight="500" opacity="1">problem and aim</text><rect x="24" y="86" width="230" height="38" rx="8" fill="var(--c5,#c43d63)" stroke="var(--c5,#c43d63)" stroke-width="1.8" opacity="0.09"/><text x="38" y="102" fill="var(--c5,#c43d63)" font-size="12.5" text-anchor="start" font-weight="700" opacity="1">Methods</text><text x="38" y="117" fill="var(--fg)" font-size="11" text-anchor="start" font-weight="500" opacity="1">what we did</text><rect x="24" y="132" width="230" height="38" rx="8" fill="var(--c6,#2c8a52)" stroke="var(--c6,#2c8a52)" stroke-width="1.8" opacity="0.09"/><text x="38" y="148" fill="var(--c6,#2c8a52)" font-size="12.5" text-anchor="start" font-weight="700" opacity="1">Results</text><text x="38" y="163" fill="var(--fg)" font-size="11" text-anchor="start" font-weight="500" opacity="1">what we found</text><rect x="24" y="178" width="230" height="38" rx="8" fill="var(--warn,#b8730c)" stroke="var(--warn,#b8730c)" stroke-width="1.8" opacity="0.09"/><text x="38" y="194" fill="var(--warn,#b8730c)" font-size="12.5" text-anchor="start" font-weight="700" opacity="1">Discussion</text><text x="38" y="209" fill="var(--fg)" font-size="11" text-anchor="start" font-weight="500" opacity="1">what it means</text><text x="300" y="56" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">Abstract = the whole</text><text x="300" y="78" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">paper in 150 words.</text><text x="300" y="111" fill="var(--tc,var(--accent))" font-size="13.5" text-anchor="start" font-weight="700" opacity="1">Aim: «This paper</text><text x="300" y="133" fill="var(--tc,var(--accent))" font-size="13.5" text-anchor="start" font-weight="700" opacity="1">presents / analyses…»</text></svg><figcaption>Un artículo sigue el esquema introducción, métodos, resultados y discusión; cada sección tiene frases típicas.</figcaption></figure><figure class="ill"><div class="ill-t">Scientific writing prefers the object of the action</div><svg viewBox="0 0 560 262" role="img" aria-label="Active to passive" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><rect x="24" y="56" width="236" height="40" rx="8" fill="var(--muted)" stroke="var(--muted)" stroke-width="1.6" opacity="0.08"/><text x="38" y="72" fill="var(--muted)" font-size="11" text-anchor="start" font-weight="600" opacity="1">Active</text><text x="38" y="88" fill="var(--fg)" font-size="12.5" text-anchor="start" font-weight="500" opacity="1">We heated the sample.</text><line x1="142" y1="100" x2="142" y2="119.9" stroke="var(--tc,var(--accent))" stroke-width="2.4" opacity="1" stroke-linecap="round"/><polygon points="142,128 138.3,119.8 145.7,119.8" fill="var(--tc,var(--accent))"/><rect x="24" y="132" width="236" height="40" rx="8" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="1.8" opacity="0.1"/><text x="38" y="148" fill="var(--tc,var(--accent))" font-size="11" text-anchor="start" font-weight="600" opacity="1">Passive</text><text x="38" y="164" fill="var(--fg)" font-size="12.5" text-anchor="start" font-weight="500" opacity="1">The sample was heated.</text><text x="24" y="206" fill="var(--fg)" font-size="12" text-anchor="start" font-weight="600" opacity="1">be + past participle; the agent is omitted</text><text x="300" y="56" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">Formal style:</text><text x="300" y="78" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">avoid «I» and «we»</text><text x="300" y="100" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">avoid contractions</text><text x="300" y="122" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">use precise nouns</text><text x="300" y="155" fill="var(--muted)" font-size="13" text-anchor="start" opacity="1">«It can be seen that…»</text></svg><figcaption>La voz pasiva coloca en primer lugar la muestra o el proceso, que es lo relevante, y deja fuera al autor.</figcaption></figure></div><!--/ill--><details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Vocabulario clave del tema 8 <span class="src">8 términos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Término</th><th>Significado</th><th>Nota · ejemplo</th></tr><tr><td class="sym">formal / neutral / informal</td><td>los tres registros</td><td class="u"></td></tr><tr><td class="sym">contraction</td><td>we’d, don’t</td><td class="u">marca informal</td></tr><tr><td class="sym">phrasal verb</td><td>carry on, fix up</td><td class="u">marca informal</td></tr><tr><td class="sym">verify, proceed</td><td>verbos latinos</td><td class="u">marca formal</td></tr><tr><td class="sym">hedging</td><td>matizar</td><td class="u">may, appear to</td></tr><tr><td class="sym">however</td><td>sin embargo</td><td class="u">+ coma</td></tr><tr><td class="sym">nominalisation</td><td>nominalización</td><td class="u">estilo académico</td></tr><tr><td class="sym">to paraphrase</td><td>parafrasear</td><td class="u">en resúmenes</td></tr></table></div></div></details>
 <figure class="fig"><p class="ft">Ejercicio interactivo - formal, neutral o informal</p><div data-sim="registro"></div><figcaption>Responde antes de mirar la explicación: son los mismos ejercicios que se hacen en clase y las mismas estructuras que caen en la prueba escrita.</figcaption></figure>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Registro: informal, neutro, formal</p><p>Mezclar registros es peor que elegir uno mal. En escritura formal: <b>sin contracciones</b> (<i>do not</i>, no <i>don’t</i>), <b>verbos latinos</b> en lugar de phrasal verbs (<i>get → obtain, start → commence, find out → determine, look into → investigate, put up with → tolerate</i>), y conectores formales (<i>moreover, furthermore, nevertheless, hence, whereas</i>). La pasiva y las estructuras impersonales dan tono académico: «It was found that…», «It is widely accepted that…», «Data were collected over six months».</p><p class="ft">Cautela (hedging) y estructura</p><p>En un texto académico no se afirma todo de forma tajante: <i>may, might, appear to, tend to, suggest that, it is likely that, to some extent</i>. Compara: «The new alloy is better» (informal, rotundo) vs «The new alloy <b>appears to</b> perform better under high temperatures» (cauteloso). Estructura de un ensayo: <b>Topic → Introduction → Basic facts → Challenges → Possible solutions (pros/cons) → Conclusion</b>, con un párrafo por apartado.</p></div><!--/amp1--><!--deep--><h3 id="t8-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Registro académico</h4>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Registro: informal, neutro, formal</p><p class="lede">Mezclar registros es peor que elegir uno mal. En escritura formal: <b>sin contracciones</b> (<i>do not</i>, no <i>don’t</i>), <b>verbos latinos</b> en lugar de phrasal verbs (<i>get → obtain, start → commence, find out → determine, look into → investigate, put up with → tolerate</i>), y conectores formales (<i>moreover, furthermore, nevertheless, hence, whereas</i>). La pasiva y las estructuras impersonales dan tono académico: «It was found that…», «It is widely accepted that…», «Data were collected over six months».</p><p class="ft">Cautela (hedging) y estructura</p><p>En un texto académico no se afirma todo de forma tajante: <i>may, might, appear to, tend to, suggest that, it is likely that, to some extent</i>. Compara: «The new alloy is better» (informal, rotundo) vs «The new alloy <b>appears to</b> perform better under high temperatures» (cauteloso). Estructura de un ensayo: <b>Topic → Introduction → Basic facts → Challenges → Possible solutions (pros/cons) → Conclusion</b>, con un párrafo por apartado.</p></div><!--/amp1--><!--deep--><h3 id="t8-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
+<h4><span class="hn">1</span>Registro académico</h4>
 <p>El inglés académico es <b>impersonal</b> y preciso. Se evitan las contracciones (<i>don’t</i>, <i>it’s</i>) y se prefieren verbos formales: <i>demonstrate</i>, <i>indicate</i>, <i>suggest</i>.</p>
 <ul><li><i>Furthermore, moreover, however, therefore</i> para conectar ideas.</li><li>Escribe en tercera persona o en voz pasiva: <i>It was observed that…</i></li></ul>
 <details class="dem"><summary><span class="pn">∴</span>Estructura de un informe técnico</summary><div class="inner"><ol class="pasos"><li><b>Abstract</b>: resumen de objetivo, método y resultado.</li><li><b>Introduction</b>: contexto y objetivo.</li><li><b>Methods</b> y <b>Results</b>: qué se hizo y qué se obtuvo.</li><li><b>Discussion</b> y <b>Conclusions</b>.</li></ol>
 <div class="box trap deepnote"><b>Cuidado.</b> <i>Results</i> describe lo que se observa; <i>discussion</i> interpreta. No mezcles las dos.</div></div></details>
-<h4>2. Citar y referenciar</h4>
+<h4><span class="hn">2</span>Citar y referenciar</h4>
 <p>Las fuentes se citan con el estilo que pida el profesor (APA, IEEE). Las cifras se escriben con punto decimal en inglés: <i>3.5 kW</i>.</p>
 </div><!--/deep--><h3 id="t8-formulas">Vocabulario y expresiones</h3>
 <div class="box key"><ul>

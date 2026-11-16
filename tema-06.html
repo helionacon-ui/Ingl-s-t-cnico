@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,7 +86,7 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c7);--tcs:var(--c7s)">
 <div class="sh"><span aria-hidden="true" class="badge">6</span><div class="shx"><p class="kick">Especialidad y comunicación · Tema 6</p><h2 id="t6">Automation & control</h2><div class="tags"><span class="tag">Especialidad y comunicación</span><span class="tag">Especialidad</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> manejar la terminología de control automático e instalaciones industriales, y las estructuras condicionales y de causa-efecto que describen el comportamiento de un sistema.</p><ul>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> manejar la terminología de control automático e instalaciones industriales, y las estructuras condicionales y de causa-efecto que describen el comportamiento de un sistema.</p><ul>
 <li>El vocabulario de control es casi transparente (<i>controller, sensor, actuator, feedback</i>), pero las <b>estructuras</b> que lo rodean no: condicionales, causa-efecto y comparación de prestaciones.</li>
 <li>Las <b>condicionales</b> son la columna vertebral de cualquier descripción de automatismo: tipo cero para leyes generales («if the temperature rises, the valve opens») y primera para situaciones concretas («if the sensor fails, the system will shut down»).</li>
 <li>La cadena causa-efecto se encadena con <i>this causes…, which results in…, leading to…, hence…</i>.</li>
@@ -56,10 +96,10 @@ details>summary{line-height:1.7;padding-block:.5em}
 <!--ill--><div class="ill-wrap"><h3 class="ill-h" style="margin:22px 0 4px">En imágenes</h3><figure class="ill"><div class="ill-t">The control loop, term by term</div><svg viewBox="0 0 560 262" role="img" aria-label="Closed-loop control" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><rect x="20" y="100" width="62" height="36" rx="8" fill="var(--muted)" stroke="var(--muted)" stroke-width="2" opacity="0.14"/><text x="51" y="121.8" fill="var(--muted)" font-size="11" text-anchor="middle" font-weight="700" opacity="1">setpoint</text><circle cx="112" cy="118" r="10" fill="none" stroke="var(--fg)" stroke-width="2.2" opacity="1"/><text x="112" y="122" fill="var(--fg)" font-size="12" text-anchor="middle" font-weight="700" opacity="1">Σ</text><line x1="82" y1="118" x2="93.7" y2="118" stroke="var(--muted)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="100,118 93.6,120.9 93.6,115.1" fill="var(--muted)"/><rect x="140" y="100" width="70" height="36" rx="8" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2" opacity="0.14"/><text x="175" y="121.8" fill="var(--tc,var(--accent))" font-size="11" text-anchor="middle" font-weight="700" opacity="1">controller</text><rect x="230" y="100" width="56" height="36" rx="8" fill="var(--c5,#c43d63)" stroke="var(--c5,#c43d63)" stroke-width="2" opacity="0.14"/><text x="258" y="121.8" fill="var(--c5,#c43d63)" font-size="11" text-anchor="middle" font-weight="700" opacity="1">plant</text><line x1="122" y1="118" x2="131.7" y2="118" stroke="var(--muted)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="138,118 131.6,120.9 131.6,115.1" fill="var(--muted)"/><line x1="210" y1="118" x2="221.7" y2="118" stroke="var(--muted)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="228,118 221.6,120.9 221.6,115.1" fill="var(--muted)"/><rect x="140" y="170" width="70" height="34" rx="8" fill="var(--c6,#2c8a52)" stroke="var(--c6,#2c8a52)" stroke-width="2" opacity="0.14"/><text x="175" y="190.8" fill="var(--c6,#2c8a52)" font-size="11" text-anchor="middle" font-weight="700" opacity="1">sensor</text><line x1="258" y1="136" x2="258" y2="187" stroke="var(--muted)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><line x1="258" y1="187" x2="218.3" y2="187" stroke="var(--muted)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="212,187 218.4,184.1 218.4,189.9" fill="var(--muted)"/><line x1="140" y1="187" x2="112" y2="187" stroke="var(--muted)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><line x1="112" y1="187" x2="112" y2="136.3" stroke="var(--muted)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="112,130 114.9,136.4 109.1,136.4" fill="var(--muted)"/><text x="24" y="236" fill="var(--fg)" font-size="11.5" text-anchor="start" font-weight="600" opacity="1">feedback = output measured and compared with the setpoint</text><text x="330" y="56" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">open loop: no feedback</text><text x="330" y="78" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">closed loop: feedback</text><text x="330" y="111" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">error = setpoint −</text><text x="330" y="133" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">measured value</text><text x="330" y="166" fill="var(--muted)" font-size="13" text-anchor="start" opacity="1">disturbance · actuator</text></svg><figcaption>El sistema compara la consigna con la medida del sensor; la diferencia, o error, es lo que el controlador intenta reducir.</figcaption></figure><figure class="ill"><div class="ill-t">Input devices and output devices</div><svg viewBox="0 0 560 262" role="img" aria-label="Sensors and actuators" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><rect x="20" y="50" width="110" height="150" rx="8" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="1.8" opacity="0.06"/><rect x="150" y="50" width="110" height="150" rx="8" fill="var(--c6,#2c8a52)" stroke="var(--c6,#2c8a52)" stroke-width="1.8" opacity="0.06"/><text x="75" y="72" fill="var(--tc,var(--accent))" font-size="13.5" text-anchor="middle" font-weight="700" opacity="1">Sensors</text><text x="205" y="72" fill="var(--c6,#2c8a52)" font-size="13.5" text-anchor="middle" font-weight="700" opacity="1">Actuators</text><text x="75" y="100" fill="var(--fg)" font-size="12" text-anchor="middle" font-weight="500" opacity="1">temperature</text><text x="75" y="120" fill="var(--fg)" font-size="12" text-anchor="middle" font-weight="500" opacity="1">pressure</text><text x="75" y="140" fill="var(--fg)" font-size="12" text-anchor="middle" font-weight="500" opacity="1">proximity</text><text x="75" y="160" fill="var(--fg)" font-size="12" text-anchor="middle" font-weight="500" opacity="1">encoder</text><text x="75" y="180" fill="var(--fg)" font-size="12" text-anchor="middle" font-weight="500" opacity="1">limit switch</text><text x="205" y="100" fill="var(--fg)" font-size="12" text-anchor="middle" font-weight="500" opacity="1">motor</text><text x="205" y="120" fill="var(--fg)" font-size="12" text-anchor="middle" font-weight="500" opacity="1">valve</text><text x="205" y="140" fill="var(--fg)" font-size="12" text-anchor="middle" font-weight="500" opacity="1">cylinder</text><text x="205" y="160" fill="var(--fg)" font-size="12" text-anchor="middle" font-weight="500" opacity="1">relay</text><text x="205" y="180" fill="var(--fg)" font-size="12" text-anchor="middle" font-weight="500" opacity="1">heater</text><text x="300" y="56" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">Sensors measure,</text><text x="300" y="78" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">actuators act.</text><text x="300" y="111" fill="var(--muted)" font-size="13" text-anchor="start" opacity="1">«The sensor detects</text><text x="300" y="133" fill="var(--muted)" font-size="13" text-anchor="start" opacity="1">the part and the</text><text x="300" y="155" fill="var(--muted)" font-size="13" text-anchor="start" opacity="1">cylinder pushes it.»</text></svg><figcaption>Los sensores miden o detectan, los actuadores ejecutan; los verbos detect, measure, drive y switch distinguen cada papel.</figcaption></figure></div><!--/ill--><details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Vocabulario clave del tema 6 <span class="src">8 términos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Término</th><th>Significado</th><th>Nota · ejemplo</th></tr><tr><td class="sym">setpoint</td><td>consigna</td><td class="u"></td></tr><tr><td class="sym">feedback</td><td>realimentación</td><td class="u"></td></tr><tr><td class="sym">actuator</td><td>actuador</td><td class="u"></td></tr><tr><td class="sym">overshoot</td><td>sobreoscilación</td><td class="u"></td></tr><tr><td class="sym">PLC</td><td>autómata programable</td><td class="u"></td></tr><tr><td class="sym">safety</td><td>seguridad (accidentes)</td><td class="u">≠ security</td></tr><tr><td class="sym">to trip</td><td>saltar (una protección)</td><td class="u"></td></tr><tr><td class="sym">actual value</td><td>valor real</td><td class="u">≠ «actual»</td></tr></table></div></div></details>
 <figure class="fig"><p class="ft">Ejercicio interactivo - terminologia de automatizacion y control</p><div data-sim="control"></div><figcaption>Responde antes de mirar la explicación: son los mismos ejercicios que se hacen en clase y las mismas estructuras que caen en la prueba escrita.</figcaption></figure>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Condicionales de tipo 0, 1 y 2</p><p>Los tres que más se usan en automatismos: <b>tipo 0</b> (ley general, siempre cierto): <i>If + presente, presente</i> → «If the pressure exceeds 5 bar, the valve opens». <b>Tipo 1</b> (caso real futuro): <i>If + presente, will + infinitivo</i> → «If the pump fails, the system will switch to the standby unit». <b>Tipo 2</b> (hipotético): <i>If + pasado, would + infinitivo</i> → «If the gain were higher, the response would be faster» (en tipo 2 con <i>to be</i> se usa <b>were</b>). No se pone <i>will</i> después de <i>if</i>.</p><p class="ft">Describir un lazo de control</p><p>Nombra los elementos con su función: el <b>sensor</b> mide la <i>process variable</i>; el <b>controller</b> compara con el <i>setpoint</i> y calcula la acción; el <b>actuator</b> actúa sobre la <i>manipulated variable</i>; la <i>disturbance</i> perturba el proceso. Para la respuesta: <i>rise time, settling time, overshoot, steady-state error, damping</i>. Estructura de secuencia: <b>condición → acción → resultado</b>, una frase por paso, y nombrando siempre el elemento («the solenoid valve opens», no «it opens»).</p></div><!--/amp1--><!--deep--><h3 id="t6-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Control automático: el lenguaje</h4>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Condicionales de tipo 0, 1 y 2</p><p class="lede">Los tres que más se usan en automatismos: <b>tipo 0</b> (ley general, siempre cierto): <i>If + presente, presente</i> → «If the pressure exceeds 5 bar, the valve opens». <b>Tipo 1</b> (caso real futuro): <i>If + presente, will + infinitivo</i> → «If the pump fails, the system will switch to the standby unit». <b>Tipo 2</b> (hipotético): <i>If + pasado, would + infinitivo</i> → «If the gain were higher, the response would be faster» (en tipo 2 con <i>to be</i> se usa <b>were</b>). No se pone <i>will</i> después de <i>if</i>.</p><p class="ft">Describir un lazo de control</p><p>Nombra los elementos con su función: el <b>sensor</b> mide la <i>process variable</i>; el <b>controller</b> compara con el <i>setpoint</i> y calcula la acción; el <b>actuator</b> actúa sobre la <i>manipulated variable</i>; la <i>disturbance</i> perturba el proceso. Para la respuesta: <i>rise time, settling time, overshoot, steady-state error, damping</i>. Estructura de secuencia: <b>condición → acción → resultado</b>, una frase por paso, y nombrando siempre el elemento («the solenoid valve opens», no «it opens»).</p></div><!--/amp1--><!--deep--><h3 id="t6-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
+<h4><span class="hn">1</span>Control automático: el lenguaje</h4>
 <ul><li><b>Control system</b> (sistema de control), <b>controller</b> (controlador), <b>actuator</b> (actuador), <b>sensor</b> (sensor).</li><li><b>Setpoint</b> (valor de consigna), <b>feedback loop</b> (lazo de realimentación), <b>disturbance</b> (perturbación).</li></ul>
-<h4>2. Describir un lazo de control</h4>
+<h4><span class="hn">2</span>Describir un lazo de control</h4>
 <p>Un lazo se describe en orden: <i>the sensor measures the actual value, compares it with the setpoint, and the controller adjusts the actuator.</i> La diferencia entre consigna y medida es el <b>error</b>.</p>
 <div class="box trap deepnote"><b>Cuidado.</b> <i>Stability</i> es estabilidad, pero <i>stable</i> es «estable», no «fijo». Un sistema <i>stable</i> puede oscilar amortiguado.</div>
 <details class="dem"><summary><span class="pn">∴</span>Tipos de control</summary><div class="inner"><ul><li><b>Open-loop</b> (lazo abierto) frente a <b>closed-loop</b> (lazo cerrado).</li><li><b>Proportional</b>, <b>integral</b> y <b>derivative</b> (PID): la acción proporcional responde al error actual, la integral al error acumulado y la derivativa a su velocidad de cambio.</li></ul></div></details>

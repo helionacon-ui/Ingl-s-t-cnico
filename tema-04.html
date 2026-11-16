@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,7 +86,7 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c5);--tcs:var(--c5s)">
 <div class="sh"><span aria-hidden="true" class="badge">4</span><div class="shx"><p class="kick">Common core: vocabulario técnico · Tema 4</p><h2 id="t4">Technology: describing devices</h2><div class="tags"><span class="tag">Common core: vocabulario técnico</span><span class="tag">Common core</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> describir qué es un dispositivo, cómo funciona y para qué sirve: definiciones, oraciones de relativo, estructuras de función y lenguaje de instrucciones.</p><ul>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> describir qué es un dispositivo, cómo funciona y para qué sirve: definiciones, oraciones de relativo, estructuras de función y lenguaje de instrucciones.</p><ul>
 <li>Definir y describir es <b>la competencia central</b> de la asignatura: aparece en la prueba escrita, en el portafolio y en la presentación oral.</li>
 <li>Una definición técnica tiene tres partes: <b>término + categoría + rasgo distintivo</b>. «A transducer is a device which converts one form of energy into another».</li>
 <li>La categoría casi siempre es una de estas: <i>device, component, instrument, machine, system, tool, piece of equipment</i>.</li>
@@ -56,12 +96,12 @@ details>summary{line-height:1.7;padding-block:.5em}
 <!--ill--><div class="ill-wrap"><h3 class="ill-h" style="margin:22px 0 4px">En imágenes</h3><figure class="ill"><div class="ill-t">Size words come in noun–adjective pairs</div><svg viewBox="0 0 560 262" role="img" aria-label="Dimensions" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><polygon points="60,160 160,160 160,100 60,100" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.4" opacity="0.1" stroke-linejoin="round" stroke-linecap="round"/><polygon points="60,100 100,70 200,70 160,100" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.4" opacity="0.18" stroke-linejoin="round" stroke-linecap="round"/><polygon points="160,100 200,70 200,130 160,160" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.4" opacity="0.06" stroke-linejoin="round" stroke-linecap="round"/><line x1="60" y1="180" x2="153.7" y2="180" stroke="var(--warn,#b8730c)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="160,180 153.6,182.9 153.6,177.1" fill="var(--warn,#b8730c)"/><line x1="160" y1="180" x2="66.3" y2="180" stroke="var(--warn,#b8730c)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="60,180 66.4,177.1 66.4,182.9" fill="var(--warn,#b8730c)"/><text x="110" y="198" fill="var(--warn,#b8730c)" font-size="12" text-anchor="middle" font-weight="700" opacity="1">length</text><line x1="50" y1="100" x2="50" y2="153.7" stroke="var(--c5,#c43d63)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="50,160 47.1,153.6 52.9,153.6" fill="var(--c5,#c43d63)"/><line x1="50" y1="160" x2="50" y2="106.3" stroke="var(--c5,#c43d63)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="50,100 52.9,106.4 47.1,106.4" fill="var(--c5,#c43d63)"/><text x="46" y="134" fill="var(--c5,#c43d63)" font-size="12" text-anchor="end" font-weight="700" opacity="1">height</text><text x="196" y="60" fill="var(--c6,#2c8a52)" font-size="12" text-anchor="start" font-weight="700" opacity="1">width</text><text x="310" y="56" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">Noun ↔ adjective:</text><text x="310" y="78" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">length → long</text><text x="310" y="100" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">width → wide</text><text x="310" y="122" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">height → high / tall</text><text x="310" y="144" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">depth → deep</text><text x="310" y="177" fill="var(--muted)" font-size="13" text-anchor="start" opacity="1">«It is 2 m long and</text><text x="310" y="199" fill="var(--muted)" font-size="13" text-anchor="start" opacity="1">1 m wide.»</text></svg><figcaption>Para dar medidas se usa el adjetivo después del número: dos metros de largo, un metro de ancho; el sustantivo corresponde a la dimensión.</figcaption></figure><figure class="ill"><div class="ill-t">Four sentences describe almost any device</div><svg viewBox="0 0 560 262" role="img" aria-label="Device description template" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><circle cx="40" cy="62" r="14" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2" opacity="0.2"/><text x="40" y="67" fill="var(--tc,var(--accent))" font-size="13" text-anchor="middle" font-weight="700" opacity="1">1</text><rect x="66" y="44" width="200" height="36" rx="8" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="1.6" opacity="0.08"/><text x="78" y="59" fill="var(--tc,var(--accent))" font-size="11.5" text-anchor="start" font-weight="700" opacity="1">Purpose</text><text x="78" y="74" fill="var(--fg)" font-size="12.5" text-anchor="start" font-weight="500" opacity="1">It is used to …</text><circle cx="40" cy="108" r="14" fill="var(--c5,#c43d63)" stroke="var(--c5,#c43d63)" stroke-width="2" opacity="0.2"/><text x="40" y="113" fill="var(--c5,#c43d63)" font-size="13" text-anchor="middle" font-weight="700" opacity="1">2</text><rect x="66" y="90" width="200" height="36" rx="8" fill="var(--c5,#c43d63)" stroke="var(--c5,#c43d63)" stroke-width="1.6" opacity="0.08"/><text x="78" y="105" fill="var(--c5,#c43d63)" font-size="11.5" text-anchor="start" font-weight="700" opacity="1">Parts</text><text x="78" y="120" fill="var(--fg)" font-size="12.5" text-anchor="start" font-weight="500" opacity="1">It consists of …</text><circle cx="40" cy="154" r="14" fill="var(--c6,#2c8a52)" stroke="var(--c6,#2c8a52)" stroke-width="2" opacity="0.2"/><text x="40" y="159" fill="var(--c6,#2c8a52)" font-size="13" text-anchor="middle" font-weight="700" opacity="1">3</text><rect x="66" y="136" width="200" height="36" rx="8" fill="var(--c6,#2c8a52)" stroke="var(--c6,#2c8a52)" stroke-width="1.6" opacity="0.08"/><text x="78" y="151" fill="var(--c6,#2c8a52)" font-size="11.5" text-anchor="start" font-weight="700" opacity="1">Operation</text><text x="78" y="166" fill="var(--fg)" font-size="12.5" text-anchor="start" font-weight="500" opacity="1">It works by …</text><circle cx="40" cy="200" r="14" fill="var(--warn,#b8730c)" stroke="var(--warn,#b8730c)" stroke-width="2" opacity="0.2"/><text x="40" y="205" fill="var(--warn,#b8730c)" font-size="13" text-anchor="middle" font-weight="700" opacity="1">4</text><rect x="66" y="182" width="200" height="36" rx="8" fill="var(--warn,#b8730c)" stroke="var(--warn,#b8730c)" stroke-width="1.6" opacity="0.08"/><text x="78" y="197" fill="var(--warn,#b8730c)" font-size="11.5" text-anchor="start" font-weight="700" opacity="1">Advantage</text><text x="78" y="212" fill="var(--fg)" font-size="12.5" text-anchor="start" font-weight="500" opacity="1">It is more … than …</text><text x="300" y="56" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">Always in this order:</text><text x="300" y="78" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">what it is for, what it</text><text x="300" y="100" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">has, how it works,</text><text x="300" y="122" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">why it is better.</text></svg><figcaption>Una plantilla fija —finalidad, partes, funcionamiento y ventaja— permite describir cualquier aparato de forma ordenada.</figcaption></figure></div><!--/ill--><details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Vocabulario clave del tema 4 <span class="src">8 términos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Término</th><th>Significado</th><th>Nota · ejemplo</th></tr><tr><td class="sym">device</td><td>dispositivo</td><td class="u">categoría</td></tr><tr><td class="sym">used for + -ing</td><td>sirve para</td><td class="u"></td></tr><tr><td class="sym">used to + inf.</td><td>sirve para</td><td class="u"></td></tr><tr><td class="sym">consists of</td><td>está formado por</td><td class="u">sin «in»</td></tr><tr><td class="sym">fitted with</td><td>equipado con</td><td class="u"></td></tr><tr><td class="sym">capable of</td><td>capaz de</td><td class="u">+ -ing</td></tr><tr><td class="sym">which / that</td><td>relativos</td><td class="u">coma = explicativa</td></tr><tr><td class="sym">failure to do so</td><td>de lo contrario</td><td class="u">advertencias</td></tr></table></div></div></details>
 <figure class="fig"><p class="ft">Ejercicio interactivo - estructuras para describir dispositivos</p><div data-sim="dispositivos"></div><figcaption>Responde antes de mirar la explicación: son los mismos ejercicios que se hacen en clase y las mismas estructuras que caen en la prueba escrita.</figcaption></figure>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Definir un dispositivo: la fórmula de una frase</p><p>Una buena definición tiene <b>término + categoría + rasgo que lo distingue</b>: «A thermostat <b>is a device that</b> keeps a temperature constant». Variantes: «___ refers to…», «___ is known as…», «___ can be defined as…». Después se añade la <b>función</b> con <b>used for + -ing</b> («It is used <b>for measuring</b> pressure») o <b>used to + infinitivo</b> («It is used <b>to measure</b> pressure»): ambas son correctas, pero <b>nunca</b> «used for measure».</p><p class="ft">Composición, posición y funcionamiento</p><p>Composición: «It <b>consists of</b> three parts» (con <i>of</i>), pero «It <b>comprises</b> three parts» (sin <i>of</i>) y «It is <b>made up of</b>…». Posición: <i>at the top/bottom, on the left/right, mounted on, attached to, fitted with</i>. Funcionamiento con causa-efecto: «<b>When</b> the button is pressed, the valve opens. This <b>causes</b> the pressure to drop». Para instrucciones y seguridad: «Make sure that…», «Be careful not to…», «<b>Under no circumstances should</b> the cover be removed» (inversión tras expresión negativa).</p></div><!--/amp1--><!--deep--><h3 id="t4-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Describir un dispositivo</h4>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Definir un dispositivo: la fórmula de una frase</p><p class="lede">Una buena definición tiene <b>término + categoría + rasgo que lo distingue</b>: «A thermostat <b>is a device that</b> keeps a temperature constant». Variantes: «___ refers to…», «___ is known as…», «___ can be defined as…». Después se añade la <b>función</b> con <b>used for + -ing</b> («It is used <b>for measuring</b> pressure») o <b>used to + infinitivo</b> («It is used <b>to measure</b> pressure»): ambas son correctas, pero <b>nunca</b> «used for measure».</p><p class="ft">Composición, posición y funcionamiento</p><p>Composición: «It <b>consists of</b> three parts» (con <i>of</i>), pero «It <b>comprises</b> three parts» (sin <i>of</i>) y «It is <b>made up of</b>…». Posición: <i>at the top/bottom, on the left/right, mounted on, attached to, fitted with</i>. Funcionamiento con causa-efecto: «<b>When</b> the button is pressed, the valve opens. This <b>causes</b> the pressure to drop». Para instrucciones y seguridad: «Make sure that…», «Be careful not to…», «<b>Under no circumstances should</b> the cover be removed» (inversión tras expresión negativa).</p></div><!--/amp1--><!--deep--><h3 id="t4-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
+<h4><span class="hn">1</span>Describir un dispositivo</h4>
 <div class="box key deepnote"><b>Idea clave.</b> al describir un dispositivo, se dice <b>qué es</b>, <b>para qué sirve</b> y <b>cómo funciona</b>. Cada parte se describe con su función.</div>
 <ul><li><i>It consists of…</i> / <i>It is made up of…</i> (está formado por).</li><li><i>It is used to…</i> / <i>It serves to…</i> (sirve para).</li><li><i>The sensor detects…</i>, <i>the motor drives…</i>, <i>the valve regulates…</i>.</li></ul>
 <details class="dem"><summary><span class="pn">∴</span>Partes de un dispositivo: vocabulario</summary><div class="inner"><ul><li><b>Housing</b> (carcasa), <b>shaft</b> (eje), <b>bearing</b> (rodamiento), <b>gear</b> (engranaje), <b>spring</b> (muelle), <b>switch</b> (interruptor).</li><li><b>Input</b> (entrada), <b>output</b> (salida), <b>feedback</b> (realimentación).</li></ul></div></details>
-<h4>2. Relación de causa y efecto</h4>
+<h4><span class="hn">2</span>Relación de causa y efecto</h4>
 <p>Para explicar por qué ocurre algo usa <i>because</i>, <i>since</i>, <i>as a result</i>, <i>therefore</i>. Por ejemplo: <i>The current increases, so the motor speed rises.</i></p>
 </div><!--/deep--><h3 id="t4-formulas">Vocabulario y expresiones</h3>
 <div class="box key"><ul>

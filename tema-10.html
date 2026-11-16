@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,7 +86,7 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c3);--tcs:var(--c3s)">
 <div class="sh"><span aria-hidden="true" class="badge">10</span><div class="shx"><p class="kick">Especialidad y comunicación · Tema 10</p><h2 id="t10">Professional and business English</h2><div class="tags"><span class="tag">Especialidad y comunicación</span><span class="tag">Comunicación</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> escribir correos profesionales, cartas de solicitud y currículos en inglés, y manejar el lenguaje de reuniones y entrevistas de trabajo.</p><ul>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> escribir correos profesionales, cartas de solicitud y currículos en inglés, y manejar el lenguaje de reuniones y entrevistas de trabajo.</p><ul>
 <li>Un correo profesional tiene una estructura fija de <b>cinco bloques</b>: saludo, motivo, cuerpo, acción solicitada y despedida. Rellenarla con las fórmulas adecuadas lleva dos minutos.</li>
 <li>El saludo y la despedida van <b>emparejados</b>: <i>Dear Sir or Madam</i> ⇒ <i>Yours faithfully</i>; <i>Dear Mr Smith</i> ⇒ <i>Yours sincerely</i>; <i>Dear John</i> ⇒ <i>Best regards</i>.</li>
 <li>El <b>asunto</b> debe ser informativo y breve: «Request for quotation – model XR-50», no «Hello».</li>
@@ -56,10 +96,10 @@ details>summary{line-height:1.7;padding-block:.5em}
 <!--ill--><div class="ill-wrap"><h3 class="ill-h" style="margin:22px 0 4px">En imágenes</h3><figure class="ill"><div class="ill-t">A business email in five blocks</div><svg viewBox="0 0 560 262" role="img" aria-label="Anatomy of a formal email" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><rect x="24" y="34" width="250" height="31" rx="7" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="1.6" opacity="0.09"/><text x="36" y="47" fill="var(--tc,var(--accent))" font-size="10.5" text-anchor="start" font-weight="700" opacity="1">Subject</text><text x="36" y="60" fill="var(--fg)" font-size="11.5" text-anchor="start" font-weight="500" opacity="1">Request for a quotation</text><rect x="24" y="72" width="250" height="31" rx="7" fill="var(--c5,#c43d63)" stroke="var(--c5,#c43d63)" stroke-width="1.6" opacity="0.09"/><text x="36" y="85" fill="var(--c5,#c43d63)" font-size="10.5" text-anchor="start" font-weight="700" opacity="1">Greeting</text><text x="36" y="98" fill="var(--fg)" font-size="11.5" text-anchor="start" font-weight="500" opacity="1">Dear Mr Smith,</text><rect x="24" y="110" width="250" height="31" rx="7" fill="var(--c6,#2c8a52)" stroke="var(--c6,#2c8a52)" stroke-width="1.6" opacity="0.09"/><text x="36" y="123" fill="var(--c6,#2c8a52)" font-size="10.5" text-anchor="start" font-weight="700" opacity="1">Purpose</text><text x="36" y="136" fill="var(--fg)" font-size="11.5" text-anchor="start" font-weight="500" opacity="1">I am writing to enquire about…</text><rect x="24" y="148" width="250" height="31" rx="7" fill="var(--warn,#b8730c)" stroke="var(--warn,#b8730c)" stroke-width="1.6" opacity="0.09"/><text x="36" y="161" fill="var(--warn,#b8730c)" font-size="10.5" text-anchor="start" font-weight="700" opacity="1">Details</text><text x="36" y="174" fill="var(--fg)" font-size="11.5" text-anchor="start" font-weight="500" opacity="1">Could you send us…?</text><rect x="24" y="186" width="250" height="31" rx="7" fill="var(--c2,#3a63c4)" stroke="var(--c2,#3a63c4)" stroke-width="1.6" opacity="0.09"/><text x="36" y="199" fill="var(--c2,#3a63c4)" font-size="10.5" text-anchor="start" font-weight="700" opacity="1">Closing</text><text x="36" y="212" fill="var(--fg)" font-size="11.5" text-anchor="start" font-weight="500" opacity="1">Yours sincerely, / Kind regards,</text><text x="310" y="56" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">Polite requests:</text><text x="310" y="78" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">Could you…?</text><text x="310" y="100" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">I would appreciate…</text><text x="310" y="122" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">Please find attached…</text></svg><figcaption>El correo formal sigue un orden fijo y utiliza fórmulas de cortesía estándar en cada bloque.</figcaption></figure><figure class="ill"><div class="ill-t">From informal to formal</div><svg viewBox="0 0 560 262" role="img" aria-label="Register scale" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><line x1="30" y1="130" x2="261.9" y2="130" stroke="var(--muted)" stroke-width="2" opacity="1" stroke-linecap="round"/><polygon points="270,130 261.8,133.7 261.8,126.3" fill="var(--muted)"/><text x="30" y="112" fill="var(--c6,#2c8a52)" font-size="12" text-anchor="start" font-weight="700" opacity="1">informal</text><text x="270" y="112" fill="var(--tc,var(--accent))" font-size="12" text-anchor="end" font-weight="700" opacity="1">formal</text><text x="34" y="150" fill="var(--c6,#2c8a52)" font-size="11" text-anchor="start" font-weight="600" opacity="1">Hi</text><text x="266" y="150" fill="var(--tc,var(--accent))" font-size="11" text-anchor="end" font-weight="600" opacity="1">Dear Sir/Madam</text><text x="34" y="167" fill="var(--c6,#2c8a52)" font-size="11" text-anchor="start" font-weight="600" opacity="1">Thanks</text><text x="266" y="167" fill="var(--tc,var(--accent))" font-size="11" text-anchor="end" font-weight="600" opacity="1">Thank you</text><text x="34" y="184" fill="var(--c6,#2c8a52)" font-size="11" text-anchor="start" font-weight="600" opacity="1">ASAP</text><text x="266" y="184" fill="var(--tc,var(--accent))" font-size="11" text-anchor="end" font-weight="600" opacity="1">as soon as possible</text><text x="34" y="201" fill="var(--c6,#2c8a52)" font-size="11" text-anchor="start" font-weight="600" opacity="1">Get back to me</text><text x="266" y="201" fill="var(--tc,var(--accent))" font-size="11" text-anchor="end" font-weight="600" opacity="1">Please reply</text><text x="330" y="56" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">Choose the register</text><text x="330" y="78" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">by reader and purpose.</text><text x="330" y="111" fill="var(--tc,var(--accent))" font-size="13.5" text-anchor="start" font-weight="700" opacity="1">Formal: full forms,</text><text x="330" y="133" fill="var(--tc,var(--accent))" font-size="13.5" text-anchor="start" font-weight="700" opacity="1">no slang, no «!»</text></svg><figcaption>El mismo mensaje cambia de expresión según el destinatario; en contexto profesional se usan formas completas y cortesía.</figcaption></figure></div><!--/ill--><details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Vocabulario clave del tema 10 <span class="src">8 términos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Término</th><th>Significado</th><th>Nota · ejemplo</th></tr><tr><td class="sym">Yours faithfully</td><td>sin nombre</td><td class="u">Dear Sir or Madam</td></tr><tr><td class="sym">Yours sincerely</td><td>con nombre</td><td class="u">Dear Mr Smith</td></tr><tr><td class="sym">to enquire about</td><td>solicitar información</td><td class="u"></td></tr><tr><td class="sym">I would be grateful if</td><td>petición formal</td><td class="u"></td></tr><tr><td class="sym">by + fecha</td><td>no más tarde de</td><td class="u">≠ until</td></tr><tr><td class="sym">look forward to + -ing</td><td>quedar a la espera</td><td class="u">error típico</td></tr><tr><td class="sym">quotation</td><td>presupuesto</td><td class="u"></td></tr><tr><td class="sym">STAR</td><td>entrevista</td><td class="u">Situation Task Action Result</td></tr></table></div></div></details>
 <figure class="fig"><p class="ft">Ejercicio interactivo - falsos amigos y errores tipicos</p><div data-sim="falsos"></div><figcaption>Responde antes de mirar la explicación: son los mismos ejercicios que se hacen en clase y las mismas estructuras que caen en la prueba escrita.</figcaption></figure>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Escribir un correo formal</p><p>Estructura: <b>saludo → motivo → petición/información → cierre → despedida</b>. Saludo y despedida van emparejados: <i>Dear Sir or Madam → Yours faithfully</i>; <i>Dear Mr/Ms Smith → Yours sincerely</i>; <i>Dear Anna → Kind regards</i>. Motivo: «I am writing to enquire about…». Petición cortés: «<b>Could you please send me…</b>», «<b>I would be grateful if you could…</b>». Malas noticias: «Unfortunately, we are unable to…», «I regret to inform you that…». Cierre: «<b>I look forward to hearing from you.</b>» «Please find attached…» (adjuntos).</p><p class="ft">CV, entrevista y reuniones</p><p>En el <b>CV</b> se usan verbos de logro en pasado y sin sujeto: <i>designed, implemented, developed, led, reduced</i> («Reduced downtime by 15 %»). En la <b>entrevista</b>, usa la técnica <b>STAR</b>: Situation, Task, Action, Result. En <b>reuniones</b>: <i>agenda, minutes, to chair a meeting, action points, deadline, to follow up, AOB (any other business)</i>. Cuidado con los falsos amigos: <i>actually</i> = en realidad (no «actualmente»), <i>eventually</i> = finalmente, <i>sensible</i> = sensato, <i>library</i> = biblioteca.</p></div><!--/amp1--><!--deep--><h3 id="t10-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Correspondencia profesional</h4>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Escribir un correo formal</p><p class="lede">Estructura: <b>saludo → motivo → petición/información → cierre → despedida</b>. Saludo y despedida van emparejados: <i>Dear Sir or Madam → Yours faithfully</i>; <i>Dear Mr/Ms Smith → Yours sincerely</i>; <i>Dear Anna → Kind regards</i>. Motivo: «I am writing to enquire about…». Petición cortés: «<b>Could you please send me…</b>», «<b>I would be grateful if you could…</b>». Malas noticias: «Unfortunately, we are unable to…», «I regret to inform you that…». Cierre: «<b>I look forward to hearing from you.</b>» «Please find attached…» (adjuntos).</p><p class="ft">CV, entrevista y reuniones</p><p>En el <b>CV</b> se usan verbos de logro en pasado y sin sujeto: <i>designed, implemented, developed, led, reduced</i> («Reduced downtime by 15 %»). En la <b>entrevista</b>, usa la técnica <b>STAR</b>: Situation, Task, Action, Result. En <b>reuniones</b>: <i>agenda, minutes, to chair a meeting, action points, deadline, to follow up, AOB (any other business)</i>. Cuidado con los falsos amigos: <i>actually</i> = en realidad (no «actualmente»), <i>eventually</i> = finalmente, <i>sensible</i> = sensato, <i>library</i> = biblioteca.</p></div><!--/amp1--><!--deep--><h3 id="t10-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
+<h4><span class="hn">1</span>Correspondencia profesional</h4>
 <p>Un correo técnico o profesional comienza con un saludo formal y un objetivo claro. Se indica la acción esperada: <i>Could you please send me…</i>, <i>I would be grateful if…</i>.</p>
-<h4>2. Currículum y entrevista</h4>
+<h4><span class="hn">2</span>Currículum y entrevista</h4>
 <ul><li><b>Curriculum vitae (CV)</b> y <b>cover letter</b> (carta de presentación).</li><li><b>Responsibilities</b> (funciones) y <b>achievements</b> (logros): en el CV se describen con verbos de acción en pasado: <i>designed, managed, reduced</i>.</li></ul>
 <p>En la entrevista se responde con ejemplos: <i>In my previous job, I…</i></p>
 <details class="dem"><summary><span class="pn">∴</span>Vocabulario de empresa</summary><div class="inner"><ul><li><b>Budget</b> (presupuesto), <b>deadline</b> (fecha límite), <b>stakeholder</b> (parte interesada), <b>supplier</b> (proveedor).</li><li><b>Lead time</b> (plazo de entrega), <b>invoice</b> (factura), <b>procurement</b> (compras).</li></ul></div></details>

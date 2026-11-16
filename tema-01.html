@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,7 +86,7 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c2);--tcs:var(--c2s)">
 <div class="sh"><span aria-hidden="true" class="badge">1</span><div class="shx"><p class="kick">Common core: vocabulario técnico · Tema 1</p><h2 id="t1">Energy</h2><div class="tags"><span class="tag">Common core: vocabulario técnico</span><span class="tag">Common core</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> dominar el vocabulario de energía y electricidad que aparece en la prueba escrita y en los textos de lectura: fuentes, conversión, consumo, eficiencia y las unidades, con las estructuras para hablar de cifras y porcentajes.</p><ul>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> dominar el vocabulario de energía y electricidad que aparece en la prueba escrita y en los textos de lectura: fuentes, conversión, consumo, eficiencia y las unidades, con las estructuras para hablar de cifras y porcentajes.</p><ul>
 <li>Es el primer bloque del <b>common core</b> y el que más se repite en las pruebas de comprensión lectora y oral, porque los textos divulgativos sobre energía abundan.</li>
 <li>Distingue tres familias: las <b>fuentes</b> (fossil fuels, renewables, nuclear), la <b>conversión</b> (generation, transmission, storage) y el <b>consumo</b> (demand, efficiency, savings).</li>
 <li>Las <b>unidades</b> tienen trampas: <i>watt</i> es potencia y <i>kilowatt-hour</i> energía; nunca «watts per hour».</li>
@@ -56,11 +96,11 @@ details>summary{line-height:1.7;padding-block:.5em}
 <!--ill--><div class="ill-wrap"><h3 class="ill-h" style="margin:22px 0 4px">En imágenes</h3><figure class="ill"><div class="ill-t">Energy flows through a chain of conversions</div><svg viewBox="0 0 560 262" role="img" aria-label="Energy conversion chain" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><rect x="24" y="60" width="60" height="40" rx="8" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2" opacity="0.14"/><text x="54" y="84.2" fill="var(--tc,var(--accent))" font-size="12" text-anchor="middle" font-weight="700" opacity="1">fuel</text><line x1="86" y1="80" x2="89.7" y2="80" stroke="var(--muted)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="96,80 89.6,82.9 89.6,77.1" fill="var(--muted)"/><rect x="98" y="60" width="60" height="40" rx="8" fill="var(--c5,#c43d63)" stroke="var(--c5,#c43d63)" stroke-width="2" opacity="0.14"/><text x="128" y="84.2" fill="var(--c5,#c43d63)" font-size="12" text-anchor="middle" font-weight="700" opacity="1">heat</text><line x1="160" y1="80" x2="163.7" y2="80" stroke="var(--muted)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="170,80 163.6,82.9 163.6,77.1" fill="var(--muted)"/><rect x="172" y="60" width="60" height="40" rx="8" fill="var(--c6,#2c8a52)" stroke="var(--c6,#2c8a52)" stroke-width="2" opacity="0.14"/><text x="202" y="84.2" fill="var(--c6,#2c8a52)" font-size="12" text-anchor="middle" font-weight="700" opacity="1">steam</text><line x1="234" y1="80" x2="237.7" y2="80" stroke="var(--muted)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="244,80 237.6,82.9 237.6,77.1" fill="var(--muted)"/><rect x="246" y="60" width="60" height="40" rx="8" fill="var(--warn,#b8730c)" stroke="var(--warn,#b8730c)" stroke-width="2" opacity="0.14"/><text x="276" y="84.2" fill="var(--warn,#b8730c)" font-size="12" text-anchor="middle" font-weight="700" opacity="1">turbine</text><rect x="24" y="130" width="80" height="40" rx="8" fill="var(--c5,#c43d63)" stroke="var(--c5,#c43d63)" stroke-width="2" opacity="0.14"/><text x="64" y="154.2" fill="var(--c5,#c43d63)" font-size="12" text-anchor="middle" font-weight="700" opacity="1">generator</text><line x1="106" y1="150" x2="109.7" y2="150" stroke="var(--muted)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="116,150 109.6,152.9 109.6,147.1" fill="var(--muted)"/><rect x="118" y="130" width="80" height="40" rx="8" fill="var(--warn,#b8730c)" stroke="var(--warn,#b8730c)" stroke-width="2" opacity="0.14"/><text x="158" y="154.2" fill="var(--warn,#b8730c)" font-size="12" text-anchor="middle" font-weight="700" opacity="1">electricity</text><line x1="200" y1="150" x2="203.7" y2="150" stroke="var(--muted)" stroke-width="1.8" opacity="1" stroke-linecap="round"/><polygon points="210,150 203.6,152.9 203.6,147.1" fill="var(--muted)"/><rect x="212" y="130" width="80" height="40" rx="8" fill="var(--c6,#2c8a52)" stroke="var(--c6,#2c8a52)" stroke-width="2" opacity="0.14"/><text x="252" y="154.2" fill="var(--c6,#2c8a52)" font-size="12" text-anchor="middle" font-weight="700" opacity="1">grid</text><text x="24" y="214" fill="var(--fg)" font-size="12" text-anchor="start" font-weight="600" opacity="1">chemical → thermal → mechanical → electrical</text><text x="330" y="56" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">Verbs to describe it:</text><text x="330" y="78" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">burn  ·  heat  ·  convert</text><text x="330" y="100" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">drive  ·  generate</text><text x="330" y="122" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">transmit  ·  store</text><text x="330" y="155" fill="var(--muted)" font-size="13" text-anchor="start" opacity="1">«The turbine is driven</text><text x="330" y="177" fill="var(--muted)" font-size="13" text-anchor="start" opacity="1">by steam.»</text></svg><figcaption>Cada eslabón de la cadena se describe con un verbo de transformación, normalmente en pasiva: la turbina es movida por el vapor.</figcaption></figure><figure class="ill"><div class="ill-t">Two families of energy sources and their vocabulary</div><svg viewBox="0 0 560 262" role="img" aria-label="Renewable vs non-renewable" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><rect x="30" y="50" width="236" height="150" rx="8" fill="var(--tc,var(--accent))" stroke="var(--muted)" stroke-width="1.2" opacity="0.05"/><line x1="148" y1="50" x2="148" y2="200" stroke="var(--muted)" stroke-width="1.2" opacity="1" stroke-linecap="round"/><text x="89" y="72" fill="var(--c5,#c43d63)" font-size="13.5" text-anchor="middle" font-weight="700" opacity="1">Renewable</text><text x="207" y="72" fill="var(--c6,#2c8a52)" font-size="13.5" text-anchor="middle" font-weight="700" opacity="1">Non-renewable</text><text x="89" y="100" fill="var(--fg)" font-size="12.5" text-anchor="middle" font-weight="500" opacity="1">solar</text><text x="89" y="120" fill="var(--fg)" font-size="12.5" text-anchor="middle" font-weight="500" opacity="1">wind</text><text x="89" y="140" fill="var(--fg)" font-size="12.5" text-anchor="middle" font-weight="500" opacity="1">hydro</text><text x="89" y="160" fill="var(--fg)" font-size="12.5" text-anchor="middle" font-weight="500" opacity="1">biomass</text><text x="89" y="180" fill="var(--fg)" font-size="12.5" text-anchor="middle" font-weight="500" opacity="1">geothermal</text><text x="207" y="100" fill="var(--fg)" font-size="12.5" text-anchor="middle" font-weight="500" opacity="1">coal</text><text x="207" y="120" fill="var(--fg)" font-size="12.5" text-anchor="middle" font-weight="500" opacity="1">oil</text><text x="207" y="140" fill="var(--fg)" font-size="12.5" text-anchor="middle" font-weight="500" opacity="1">natural gas</text><text x="207" y="160" fill="var(--fg)" font-size="12.5" text-anchor="middle" font-weight="500" opacity="1">nuclear fuel</text><text x="300" y="56" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">Useful contrasts:</text><text x="300" y="78" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">clean ↔ polluting</text><text x="300" y="100" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">abundant ↔ finite</text><text x="300" y="122" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">output ↔ input</text><text x="300" y="144" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">efficiency = useful</text><text x="300" y="166" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">output / total input</text></svg><figcaption>Clasificar las fuentes ayuda a recordar el vocabulario por pares de contrarios; la eficiencia compara energía útil con energía total consumida.</figcaption></figure></div><!--/ill--><details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Vocabulario clave del tema 1 <span class="src">8 términos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Término</th><th>Significado</th><th>Nota · ejemplo</th></tr><tr><td class="sym">power plant</td><td>central eléctrica</td><td class="u">power station</td></tr><tr><td class="sym">fossil-fuelled</td><td>de combustible fósil</td><td class="u">coal-fired</td></tr><tr><td class="sym">grid</td><td>red eléctrica</td><td class="u">national grid</td></tr><tr><td class="sym">kWh</td><td>kilowatt-hour</td><td class="u">energía</td></tr><tr><td class="sym">demand</td><td>demanda</td><td class="u"></td></tr><tr><td class="sym">to harness</td><td>aprovechar</td><td class="u">harness wind power</td></tr><tr><td class="sym">carbon footprint</td><td>huella de carbono</td><td class="u"></td></tr><tr><td class="sym">to phase out</td><td>eliminar progresivamente</td><td class="u"></td></tr></table></div></div></details>
 <figure class="fig"><p class="ft">Ejercicio interactivo - vocabulario de energia</p><div data-sim="energia"></div><figcaption>Responde antes de mirar la explicación: son los mismos ejercicios que se hacen en clase y las mismas estructuras que caen en la prueba escrita.</figcaption></figure>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Hablar de cifras y tendencias sin equivocarse</p><p>En inglés técnico, casi toda descripción de datos se construye con <b>verbo + preposición + cifra</b>, y la preposición cambia el significado:</p><ul><li><b>by</b> = <i>cuánto</i> cambia: «Demand rose <b>by</b> 20 %» (subió un 20 %).</li><li><b>to</b> = <i>valor al que llega</i>: «Demand rose <b>to</b> 20 %» (subió hasta el 20 %).</li><li><b>at</b> = <i>valor estable</i>: «The figure stands <b>at</b> 40 %» / «Output peaked <b>at</b> 500 MW».</li><li><b>from … to …</b> = punto de partida y de llegada: «Emissions fell <b>from</b> 12 <b>to</b> 9 million tonnes».</li></ul><p>Verbos de subida: <i>rise, increase, grow, climb, soar</i> (muy deprisa). De bajada: <i>fall, decrease, decline, drop, plummet</i> (muy deprisa). Estable: <i>level off, remain stable, plateau</i>. Y los adverbios: <i>sharply, steadily, slightly, gradually</i>.</p><p class="ft">Las tres familias del vocabulario de energía</p><p>En lugar de memorizar una lista alfabética, agrúpalas por la cadena de la energía: <b>fuente</b> (fossil fuels, renewables, nuclear) → <b>conversión</b> (turbine, generator, boiler, power station) → <b>red y consumo</b> (grid, substation, demand, load, blackout). Para cada palabra aprende también su verbo: <i>to generate electricity</i>, <i>to supply power to</i>, <i>to phase out coal</i>, <i>to harness wind</i>. Y las colocaciones frecuentes: <i>renewable energy sources, energy-efficient appliances, peak demand, off-peak electricity, carbon footprint</i>.</p></div><!--/amp1--><!--deep--><h3 id="t1-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Vocabulario clave de energía</h4>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Hablar de cifras y tendencias sin equivocarse</p><p class="lede">En inglés técnico, casi toda descripción de datos se construye con <b>verbo + preposición + cifra</b>, y la preposición cambia el significado:</p><ul><li><b>by</b> = <i>cuánto</i> cambia: «Demand rose <b>by</b> 20 %» (subió un 20 %).</li><li><b>to</b> = <i>valor al que llega</i>: «Demand rose <b>to</b> 20 %» (subió hasta el 20 %).</li><li><b>at</b> = <i>valor estable</i>: «The figure stands <b>at</b> 40 %» / «Output peaked <b>at</b> 500 MW».</li><li><b>from … to …</b> = punto de partida y de llegada: «Emissions fell <b>from</b> 12 <b>to</b> 9 million tonnes».</li></ul><p>Verbos de subida: <i>rise, increase, grow, climb, soar</i> (muy deprisa). De bajada: <i>fall, decrease, decline, drop, plummet</i> (muy deprisa). Estable: <i>level off, remain stable, plateau</i>. Y los adverbios: <i>sharply, steadily, slightly, gradually</i>.</p><p class="ft">Las tres familias del vocabulario de energía</p><p>En lugar de memorizar una lista alfabética, agrúpalas por la cadena de la energía: <b>fuente</b> (fossil fuels, renewables, nuclear) → <b>conversión</b> (turbine, generator, boiler, power station) → <b>red y consumo</b> (grid, substation, demand, load, blackout). Para cada palabra aprende también su verbo: <i>to generate electricity</i>, <i>to supply power to</i>, <i>to phase out coal</i>, <i>to harness wind</i>. Y las colocaciones frecuentes: <i>renewable energy sources, energy-efficient appliances, peak demand, off-peak electricity, carbon footprint</i>.</p></div><!--/amp1--><!--deep--><h3 id="t1-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
+<h4><span class="hn">1</span>Vocabulario clave de energía</h4>
 <ul><li><b>Energy</b> (energía), <b>power</b> (potencia, también «poder»), <b>renewable</b> (renovable), <b>fossil fuels</b> (combustibles fósiles).</li><li><b>Efficiency</b> (eficiencia): cuánta energía útil sale por cada unidad que entra.</li><li><b>Emissions</b> (emisiones) y <b>carbon footprint</b> (huella de carbono).</li></ul>
 <div class="box trap deepnote"><b>Cuidado.</b> <b>Power</b> es potencia (W) y <b>energy</b> es energía (J o kWh). En un texto técnico no son intercambiables.</div>
-<h4>2. Estructuras para describir un proceso</h4>
+<h4><span class="hn">2</span>Estructuras para describir un proceso</h4>
 <p>Cuando explicas cómo funciona una central, usa la <b>voz pasiva</b> y el <b>presente simple</b>: <i>Electricity is generated when steam turns the turbine.</i> Para secuencias usa <i>first, then, next, finally</i>.</p>
 <ol class="pasos"><li>Describe el componente principal (<i>The turbine is connected to the generator</i>).</li><li>Explica la función (<i>It converts thermal energy into mechanical energy</i>).</li><li>Cierra con el resultado (<i>As a result, output increases</i>).</li></ol>
 <details class="dem"><summary><span class="pn">∴</span>Comparar: frases de comparación</summary><div class="inner"><ul><li><i>X is more efficient than Y</i> (comparativo); <i>X is the most efficient</i> (superlativo).</li><li><i>X produces less emissions than Y</i> (con contables, <i>fewer</i>).</li><li><i>Compared with Y, X requires…</i> para introducir la comparación.</li></ul></div></details>
